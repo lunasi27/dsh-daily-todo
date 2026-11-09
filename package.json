@@ -1,0 +1,58 @@
+{
+  "name": "dsh-daily-todo",
+  "version": "1.0.0",
+  "description": "Daily todo board for DeepSeek Harness: one list per day in Work and Life sections, tick to strike through, midnight auto-archive with unfinished tasks carried into the new day. | DSH 每日待办：每天一份清单，分「工作 / 生活」两段，打钩即划掉变灰，零点自动归档，未完成项带进新的一天。",
+  "type": "module",
+  "license": "MIT",
+  "author": "lunasi27",
+  "homepage": "https://github.com/lunasi27/dsh-daily-todo#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lunasi27/dsh-daily-todo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lunasi27/dsh-daily-todo/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "deepseek",
+    "todo",
+    "todo-list",
+    "daily-planner",
+    "productivity",
+    "待办"
+  ],
+  "engines": {
+    "dsh": ">=0.2.0-rc.1",
+    "node": ">=20"
+  },
+  "main": "./index.js",
+  "icon": "./icon.svg",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  }
+}
