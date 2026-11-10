@@ -1,6 +1,6 @@
 {
   "name": "dsh-daily-todo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Daily todo board for DeepSeek Harness: one list per day in Work and Life sections, tick to strike through, midnight auto-archive with unfinished tasks carried into the new day. | DSH 每日待办：每天一份清单，分「工作 / 生活」两段，打钩即划掉变灰，零点自动归档，未完成项带进新的一天。",
   "type": "module",
   "license": "MIT",
