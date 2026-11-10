@@ -387,22 +387,25 @@ window.__ModuleLoader__.load({
 
       function beginEdit(item) {
         skipBlur.current = false
-        setEditing({ id: item.id, text: item.text })
+        // original 是进入编辑前的文本，保存时用它判断「有没有真的改过」——
+        // 不能用 item.text 比：Enter 路径传进来的 item.text 已经是新文本，会恒等。
+        setEditing({ id: item.id, text: item.text, original: item.text })
       }
 
-      function saveEdit(item, text) {
+      function saveEdit(current) {
         skipBlur.current = true
         setEditing(null)
-        const next = String(text || '').trim()
-        if (next.length === 0 || next === item.text) return
-        mutate('edit', { id: item.id, text: next })
+        if (!current) return
+        const next = String(current.text || '').trim()
+        const original = String(current.original || '').trim()
+        if (next.length === 0 || next === original) return
+        mutate('edit', { id: current.id, text: next })
       }
 
       function onEditKey(event) {
         if (event.key === 'Enter') {
           event.preventDefault()
-          const current = editingRef.current
-          if (current) saveEdit({ id: current.id, text: current.text }, current.text)
+          saveEdit(editingRef.current)
         } else if (event.key === 'Escape') {
           event.preventDefault()
           skipBlur.current = true
@@ -417,7 +420,7 @@ window.__ModuleLoader__.load({
         }
         const current = editingRef.current
         if (!current || current.id !== item.id) return
-        saveEdit({ id: item.id, text: item.text }, current.text)
+        saveEdit(current)
       }
 
       async function openArchive(id) {
@@ -458,7 +461,7 @@ window.__ModuleLoader__.load({
                 value: editing.text,
                 autoFocus: true,
                 'aria-label': t('editLabel'),
-                onChange: event => setEditing({ id: item.id, text: event.target.value }),
+                onChange: event => setEditing(prev => ({ ...prev, text: event.target.value })),
                 onKeyDown: onEditKey,
                 onBlur: () => onEditBlur(item),
               })
