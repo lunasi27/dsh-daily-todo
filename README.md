@@ -1,5 +1,7 @@
 # dsh-daily-todo · 每日待办
 
+[![Awesome DSH Plugin](https://awesome-dsh-plugin.com/badge.svg)](https://awesome-dsh-plugin.com)
+
 DeepSeek Harness（DSH）的每日待办插件：左侧图标栏点进去就是整页清单，**一天一份，分「工作 / 生活」两段，打钩即划掉，零点自动归档，没做完的带进新的一天。**
 
 <!-- 想加截图：把图片放到 docs/screenshot.png，然后把下面这行取消注释 -->

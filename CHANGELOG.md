@@ -2,6 +2,13 @@
 
 本文件记录版本变化。发布新版本时，先在这里补一节，再改 `package.json` 的 `version`。
 
+## 1.0.2 — 2026-11-11
+
+文档更新，无功能变化。
+
+- README 顶部加上社区精选列表的徽章（本插件已收录于
+  [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) 的「🎨 UI 增强」分区）。
+
 ## 1.0.1 — 2026-11-10
 
 修复编辑任务后**按 Enter 保存不生效**：保存时把新文本与「传入的 item.text」比较，而 Enter 路径传入的已经是新文本，于是永远判定为「没有改动」直接返回，请求根本没发出（点别处失焦保存的路径正常）。
